@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Report Complaint | CampusFix</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="navbar">
+
+        <a href="index.html"
+           class="logo"
+           aria-label="CampusFix home">
+            Campus<span>Fix</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary navigation">
+            <a href="index.html">Home</a>
+            <a href="track.html">Track</a>
+            <a href="login.html">Login</a>
+            <a href="register.html" class="nav-button">Register</a>
+        </nav>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main id="main-content">
+
+        <section class="form-page" aria-labelledby="complaint-title">
+
+            <div class="section-heading">
+
+                <p class="tag">
+                    CAMPUS ISSUE
+                </p>
+
+                <h1 id="complaint-title">
+                    Report a problem.
+                </h1>
+
+                <p>
+                    Tell us what is wrong and help make
+                    your campus better.
+                </p>
+
+            </div>
+
+
+            <!-- ================= LOGIN REQUIREMENT ================= -->
+
+            <aside
+                class="login-notice"
+                aria-labelledby="login-notice-title"
+            >
+
+                <h2 id="login-notice-title">
+                    Login required
+                </h2>
+
+                <p>
+                    You must be logged in to submit a complaint.
+                    Your account lets us associate the complaint
+                    with you and allows you to track its progress.
+                </p>
+
+                <a href="login.html" class="secondary-button">
+                    Log in to continue
+                </a>
+
+                <p>
+                    Don't have an account?
+                    <a href="register.html">
+                        Create one
+                    </a>
+                </p>
+
+            </aside>
+
+
+            <!-- ================= COMPLAINT FORM ================= -->
+
+            <form
+                id="complaintForm"
+                class="complaint-form"
+                novalidate
+            >
+
+                <!-- Complaint Title -->
+
+                <div class="form-group">
+
+                    <label for="title">
+                        Complaint Title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        placeholder="Example: Broken classroom fan"
+                        required
+                        maxlength="100"
+                        autocomplete="off"
+                        aria-describedby="title-help"
+                    >
+
+                    <small id="title-help">
+                        Give your complaint a short title.
+                    </small>
+
+                </div>
+
+
+                <!-- Category -->
+
+                <div class="form-group">
+
+                    <label for="category">
+                        Category
+                    </label>
+
+                    <select
+                        id="category"
+                        name="category"
+                        required
+                    >
+
+                        <option value="">
+                            Select a category
+                        </option>
+
+                        <option value="classroom">
+                            Classroom
+                        </option>
+
+                        <option value="laboratory">
+                            Laboratory
+                        </option>
+
+                        <option value="library">
+                            Library
+                        </option>
+
+                        <option value="washroom">
+                            Washroom
+                        </option>
+
+                        <option value="canteen">
+                            Canteen
+                        </option>
+
+                        <option value="electricity">
+                            Electricity
+                        </option>
+
+                        <option value="cleanliness">
+                            Cleanliness
+                        </option>
+
+                        <option value="internet">
+                            Internet / Wi-Fi
+                        </option>
+
+                        <option value="other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Location -->
+
+                <div class="form-group">
+
+                    <label for="location">
+                        Location
+                    </label>
+
+                    <input
+                        type="text"
+                        id="location"
+                        name="location"
+                        placeholder="Example: Room 204, Building A"
+                        required
+                        maxlength="150"
+                    >
+
+                </div>
+
+
+                <!-- Description -->
+
+                <div class="form-group">
+
+                    <label for="description">
+                        Description
+                    </label>
+
+                    <textarea
+                        id="description"
+                        name="description"
+                        rows="7"
+                        placeholder="Explain the problem clearly..."
+                        required
+                        maxlength="1000"
+                        aria-describedby="description-help"
+                    ></textarea>
+
+                    <small id="description-help">
+                        Maximum 1000 characters.
+                    </small>
+
+                </div>
+
+
+                <!-- Priority -->
+
+                <fieldset class="form-group">
+
+                    <legend>
+                        Priority
+                    </legend>
+
+                    <div class="priority-options">
+
+                        <label class="priority-option">
+
+                            <input
+                                type="radio"
+                                name="priority"
+                                value="low"
+                                checked
+                            >
+
+                            <span>Low</span>
+
+                        </label>
+
+
+                        <label class="priority-option">
+
+                            <input
+                                type="radio"
+                                name="priority"
+                                value="medium"
+                            >
+
+                            <span>Medium</span>
+
+                        </label>
+
+
+                        <label class="priority-option">
+
+                            <input
+                                type="radio"
+                                name="priority"
+                                value="high"
+                            >
+
+                            <span>High</span>
+
+                        </label>
+
+                    </div>
+
+                </fieldset>
+
+
+                <!-- Form Message -->
+
+                <div
+                    id="formMessage"
+                    class="form-message"
+                    role="status"
+                    aria-live="polite"
+                ></div>
+
+
+                <!-- Submit -->
+
+                <button
+                    type="submit"
+                    class="primary-button submit-button"
+                >
+                    Submit Complaint
+                    <span aria-hidden="true">→</span>
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-logo">
+            Campus<span>Fix</span>
+        </div>
+
+        <p>
+            A simple way to make campus better.
+        </p>
+
+        <p class="copyright">
+            © 2026 CampusFix
+        </p>
+
+    </footer>
+
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>
+

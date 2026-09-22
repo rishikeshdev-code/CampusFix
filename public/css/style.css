@@ -1,0 +1,1076 @@
+/* ==================================================
+   CAMPUSFIX
+   Paper + Minimalism + Neobrutalism
+   ================================================== */
+
+
+/* ================= RESET ================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #111;
+    background: #f4f0e6;
+    line-height: 1.6;
+}
+
+
+/* ================= GLOBAL ================= */
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+    background: #111;
+    color: #f4f0e6;
+}
+
+
+/* ================= PAPER BACKGROUND ================= */
+
+body {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.025) 1px,
+            transparent 1px),
+        linear-gradient(90deg,
+            rgba(0, 0, 0, 0.025) 1px,
+            transparent 1px);
+
+    background-size: 24px 24px;
+}
+
+
+/* ================= HEADER ================= */
+
+.navbar {
+    width: min(1200px, 92%);
+    margin: 24px auto 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 16px 20px;
+
+    background: #fffdf5;
+    border: 3px solid #111;
+    box-shadow: 6px 6px 0 #111;
+
+    position: relative;
+    z-index: 10;
+}
+
+
+/* ================= LOGO ================= */
+
+.logo,
+.footer-logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.logo span,
+.footer-logo span {
+    background: #ffd84d;
+    padding: 0 4px;
+}
+
+
+/* ================= NAVIGATION ================= */
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-links a {
+    padding: 8px 12px;
+    font-weight: 700;
+    border: 2px solid transparent;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+    background: #ffd84d;
+    border-color: #111;
+    outline: none;
+}
+
+.nav-button {
+    background: #111;
+    color: #fff;
+    border: 2px solid #111 !important;
+}
+
+.nav-button:hover,
+.nav-button:focus-visible {
+    background: #ff6b5f !important;
+    color: #111;
+}
+
+
+/* ================= MAIN ================= */
+
+main {
+    width: min(1200px, 92%);
+    margin: auto;
+}
+
+
+/* ================= HERO ================= */
+
+.hero {
+    min-height: 650px;
+
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+    gap: 70px;
+
+    padding: 80px 0;
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.tag {
+    display: inline-block;
+
+    margin-bottom: 18px;
+    padding: 5px 10px;
+
+    background: #b9e8ff;
+    border: 2px solid #111;
+
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+
+    box-shadow: 3px 3px 0 #111;
+}
+
+.hero h1 {
+    font-size: clamp(4rem, 8vw, 7rem);
+    line-height: 0.88;
+    letter-spacing: -6px;
+    font-weight: 900;
+    margin-bottom: 30px;
+}
+
+.hero h1 span {
+    display: block;
+
+    width: fit-content;
+
+    background: #ff6b5f;
+    padding: 5px 14px;
+
+    transform: rotate(-2deg);
+
+    border: 3px solid #111;
+    box-shadow: 7px 7px 0 #111;
+}
+
+.hero-content>p:not(.tag) {
+    max-width: 580px;
+    font-size: 1.15rem;
+    font-weight: 500;
+}
+
+
+/* ================= BUTTONS ================= */
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 32px;
+}
+
+.primary-button,
+.secondary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    min-height: 50px;
+    padding: 12px 20px;
+
+    border: 3px solid #111;
+
+    font-weight: 900;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.primary-button {
+    background: #ffd84d;
+    box-shadow: 6px 6px 0 #111;
+}
+
+.secondary-button {
+    background: #fffdf5;
+    box-shadow: 5px 5px 0 #111;
+}
+
+.primary-button:hover,
+.secondary-button:hover,
+.primary-button:focus-visible,
+.secondary-button:focus-visible {
+    transform: translate(3px, 3px);
+    box-shadow: 2px 2px 0 #111;
+    outline: none;
+}
+
+.primary-button:active,
+.secondary-button:active {
+    transform: translate(6px, 6px);
+    box-shadow: none;
+}
+
+
+/* ================= HERO CARD ================= */
+
+.hero-card {
+    position: relative;
+
+    padding: 30px;
+
+    background: #fffdf5;
+
+    border: 3px solid #111;
+    box-shadow: 12px 12px 0 #111;
+
+    transform: rotate(2deg);
+
+    animation: floatCard 4s ease-in-out infinite;
+}
+
+.hero-card::before {
+    content: "";
+    position: absolute;
+
+    width: 75px;
+    height: 22px;
+
+    top: -14px;
+    right: 35px;
+
+    background: #ff6b5f;
+
+    border: 2px solid #111;
+
+    transform: rotate(4deg);
+}
+
+.card-label {
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+
+    margin-bottom: 35px;
+}
+
+.hero-card h2 {
+    font-size: 2.4rem;
+    line-height: 1;
+    letter-spacing: -1.5px;
+
+    margin-bottom: 35px;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    width: fit-content;
+
+    padding: 7px 10px;
+
+    background: #b9e8ff;
+
+    border: 2px solid #111;
+
+    font-weight: 800;
+}
+
+.status span:first-child {
+    width: 10px;
+    height: 10px;
+
+    background: #111;
+    border-radius: 50%;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 50px;
+    padding-top: 15px;
+
+    border-top: 2px dashed #111;
+
+    font-size: 0.85rem;
+    font-weight: 800;
+}
+
+
+/* ================= FLOAT ANIMATION ================= */
+
+@keyframes floatCard {
+
+    0%,
+    100% {
+        transform: rotate(2deg) translateY(0);
+    }
+
+    50% {
+        transform: rotate(2deg) translateY(-8px);
+    }
+}
+
+
+/* ================= FEATURES ================= */
+
+.features {
+    padding: 90px 0;
+}
+
+.section-heading {
+    margin-bottom: 45px;
+}
+
+.section-heading h2,
+.cta h2 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 0.95;
+    letter-spacing: -3px;
+    font-weight: 900;
+}
+
+
+/* ================= FEATURE GRID ================= */
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.feature-card {
+    padding: 30px;
+
+    min-height: 250px;
+
+    background: #fffdf5;
+
+    border: 3px solid #111;
+    box-shadow: 7px 7px 0 #111;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.feature-card:nth-child(2) {
+    background: #ffd84d;
+}
+
+.feature-card:nth-child(3) {
+    background: #b9e8ff;
+}
+
+.feature-card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 10px 10px 0 #111;
+}
+
+.feature-number {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 40px;
+}
+
+.feature-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    max-width: 300px;
+}
+
+
+/* ================= CTA ================= */
+
+.cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+
+    margin: 60px 0 90px;
+    padding: 45px;
+
+    background: #ff6b5f;
+
+    border: 3px solid #111;
+    box-shadow: 10px 10px 0 #111;
+}
+
+.cta .tag {
+    background: #fffdf5;
+}
+
+.cta h2 {
+    max-width: 600px;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer {
+    padding: 45px 4%;
+    margin-top: 30px;
+
+    background: #111;
+    color: #fffdf5;
+
+    text-align: center;
+}
+
+footer p {
+    margin-top: 8px;
+}
+
+.footer-logo span {
+    color: #111;
+    background: #ffd84d;
+}
+
+.copyright {
+    margin-top: 25px;
+    opacity: 0.6;
+    font-size: 0.8rem;
+}
+
+
+/* ================= ACCESSIBILITY ================= */
+
+:focus-visible {
+    outline: 3px solid #111;
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 850px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        padding: 60px 0;
+    }
+
+    .hero-card {
+        max-width: 500px;
+        width: 90%;
+        margin: auto;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+
+@media (max-width: 550px) {
+
+    main {
+        width: 88%;
+    }
+
+    .navbar {
+        width: 88%;
+        padding: 14px;
+        box-shadow: 4px 4px 0 #111;
+    }
+
+    .nav-links {
+        gap: 4px;
+    }
+
+    .nav-links a {
+        padding: 7px 8px;
+        font-size: 0.85rem;
+    }
+
+    .hero {
+        padding: 50px 0;
+    }
+
+    .hero h1 {
+        font-size: 4rem;
+        letter-spacing: -4px;
+    }
+
+    .hero-card {
+        padding: 22px;
+        box-shadow: 8px 8px 0 #111;
+    }
+
+    .hero-card h2 {
+        font-size: 2rem;
+    }
+
+    .cta {
+        padding: 30px;
+        box-shadow: 7px 7px 0 #111;
+    }
+}
+
+/* ==================================================
+   CAMPUSFIX FORM + DASHBOARD STYLES
+   Add this below the existing style.css
+   ================================================== */
+
+
+/* ================= FORM PAGE ================= */
+
+.form-page {
+    width: min(700px, 92%);
+    margin: 0 auto;
+    padding: 80px 0;
+}
+
+
+/* ================= FORM ================= */
+
+.complaint-form {
+    margin-top: 35px;
+    padding: 35px;
+    background: #fffdf5;
+    border: 3px solid #111;
+    box-shadow: 8px 8px 0 #111;
+}
+
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+
+.form-group label,
+.form-group legend {
+    display: block;
+    margin-bottom: 9px;
+    font-weight: 800;
+    font-size: 1rem;
+}
+
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 14px;
+    border: 3px solid #111;
+    background: #fff;
+    font: inherit;
+    outline: none;
+    border-radius: 0;
+}
+
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    box-shadow: 5px 5px 0 #111;
+    transform: translate(-2px, -2px);
+}
+
+
+.form-group small {
+    display: block;
+    margin-top: 7px;
+    font-size: 0.85rem;
+}
+
+
+/* ================= PASSWORD ================= */
+
+.password-wrapper {
+    display: flex;
+    gap: 8px;
+}
+
+
+.password-wrapper input {
+    flex: 1;
+}
+
+
+.password-toggle {
+    border: 3px solid #111;
+    background: #ffd83d;
+    padding: 0 16px;
+    font-weight: 800;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+
+.password-toggle:hover {
+    background: #ffcf00;
+    transform: translate(-2px, -2px);
+}
+
+
+/* ================= FORGOT PASSWORD ================= */
+
+.forgot-password {
+    margin-top: 10px;
+    text-align: right;
+}
+
+
+.forgot-password a {
+    font-weight: 800;
+    text-decoration: underline;
+}
+
+
+.forgot-password a:hover {
+    background: #ffd83d;
+}
+
+
+/* ================= PRIORITY ================= */
+
+.priority-options {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+
+.priority-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border: 3px solid #111;
+    background: #fff;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+
+.priority-option:hover {
+    background: #ffd83d;
+}
+
+
+.priority-option input {
+    width: auto;
+}
+
+
+/* ================= FORM BUTTON ================= */
+
+.submit-button {
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+
+/* ================= FORM MESSAGE ================= */
+
+.form-message {
+    min-height: 24px;
+    margin: 15px 0;
+    font-weight: 700;
+}
+
+
+/* ================= FORM FOOTER ================= */
+
+.form-footer-text {
+    margin-top: 30px;
+    text-align: center;
+}
+
+
+.form-footer-text a {
+    font-weight: 800;
+    text-decoration: underline;
+}
+
+
+.form-footer-text a:hover {
+    background: #ffd83d;
+}
+
+
+/* ================= LOGIN NOTICE ================= */
+
+.login-notice {
+    margin-top: 35px;
+    padding: 25px;
+    border: 3px solid #111;
+    background: #dcecff;
+    box-shadow: 6px 6px 0 #111;
+}
+
+
+.login-notice strong {
+    font-size: 1.2rem;
+}
+
+
+.login-notice p {
+    margin: 10px 0 20px;
+}
+
+
+/* ================= TRACK RESULT ================= */
+
+.complaint-result {
+    margin-top: 50px;
+}
+
+
+.result-header {
+    margin-bottom: 25px;
+}
+
+
+.result-card {
+    border: 3px solid #111;
+    background: #fffdf5;
+    box-shadow: 8px 8px 0 #111;
+}
+
+
+.result-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 18px 20px;
+    border-bottom: 2px solid #111;
+}
+
+
+.result-row:last-child {
+    border-bottom: none;
+}
+
+
+.result-row span {
+    font-weight: 700;
+}
+
+
+.result-row strong {
+    text-align: right;
+    word-break: break-word;
+}
+
+
+/* ================= DASHBOARD ================= */
+
+.dashboard-page {
+    width: min(1100px, 92%);
+    margin: 0 auto;
+    padding: 70px 0;
+}
+
+
+.dashboard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+
+.dashboard-header h1 {
+    max-width: 750px;
+}
+
+
+.dashboard-header h1 span {
+    background: #ffd83d;
+    padding: 0 8px;
+}
+
+
+/* ================= SUMMARY ================= */
+
+.dashboard-summary {
+    margin-bottom: 60px;
+}
+
+
+.dashboard-summary h2 {
+    margin-bottom: 25px;
+}
+
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+
+.summary-card {
+    padding: 25px;
+    border: 3px solid #111;
+    background: #fffdf5;
+    box-shadow: 7px 7px 0 #111;
+}
+
+
+.summary-number {
+    display: block;
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 12px;
+}
+
+
+.summary-card h3 {
+    margin: 0;
+}
+
+
+/* ================= COMPLAINT LIST ================= */
+
+.dashboard-complaints {
+    margin-bottom: 60px;
+}
+
+
+.complaint-list {
+    display: grid;
+    gap: 20px;
+}
+
+
+.empty-state {
+    padding: 40px;
+    text-align: center;
+    border: 3px dashed #111;
+    background: #fffdf5;
+}
+
+
+.empty-state h3 {
+    margin-bottom: 10px;
+}
+
+
+/* ================= ACCOUNT CARD ================= */
+
+.account-card {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 30px;
+    border: 3px solid #111;
+    background: #ffd83d;
+    box-shadow: 8px 8px 0 #111;
+}
+
+
+.account-details {
+    display: grid;
+    gap: 15px;
+    min-width: 300px;
+}
+
+
+.account-details div {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    border-bottom: 2px solid #111;
+    padding-bottom: 8px;
+}
+
+
+.account-details dt {
+    font-weight: 800;
+}
+
+
+.account-details dd {
+    margin: 0;
+    text-align: right;
+}
+
+
+/* ================= ACCESSIBILITY ================= */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 4px solid #2457ff;
+    outline-offset: 3px;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 850px) {
+
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .account-card {
+        flex-direction: column;
+    }
+
+    .account-details {
+        min-width: 0;
+    }
+
+}
+
+
+@media (max-width: 550px) {
+
+    .form-page,
+    .dashboard-page {
+        width: 90%;
+        padding: 50px 0;
+    }
+
+    .complaint-form {
+        padding: 22px;
+        box-shadow: 5px 5px 0 #111;
+    }
+
+    .password-wrapper {
+        display: block;
+    }
+
+    .password-toggle {
+        width: 100%;
+        padding: 10px;
+        margin-top: 8px;
+    }
+
+    .result-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .result-row strong {
+        text-align: left;
+    }
+
+    .account-card {
+        padding: 22px;
+    }
+
+    .account-details div {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .account-details dd {
+        text-align: left;
+    }
+
+}
+
+
+/* ================= REDUCED MOTION ================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+}
