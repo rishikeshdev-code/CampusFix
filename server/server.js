@@ -160,7 +160,7 @@ async function startServer() {
     }
 }
 
-if (process.env.NODE_ENV !== "production" || !process.env.VERCEL) {
+if (process.env.RENDER || !process.env.VERCEL) {
     startServer();
 }
 
