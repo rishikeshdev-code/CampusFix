@@ -613,6 +613,9 @@ footer p {
 
 .form-group {
     margin-bottom: 25px;
+    border: none;
+    padding: 0;
+    margin-inline: 0;
 }
 
 
@@ -622,10 +625,11 @@ footer p {
     margin-bottom: 9px;
     font-weight: 800;
     font-size: 1rem;
+    padding: 0;
 }
 
 
-.form-group input,
+.form-group input:not([type="radio"]):not([type="checkbox"]),
 .form-group select,
 .form-group textarea {
     width: 100%;
@@ -644,7 +648,7 @@ footer p {
 }
 
 
-.form-group input:focus,
+.form-group input:not([type="radio"]):not([type="checkbox"]):focus,
 .form-group select:focus,
 .form-group textarea:focus {
     box-shadow: 5px 5px 0 #111;
@@ -735,6 +739,15 @@ footer p {
 
 .priority-option input {
     width: auto;
+    margin: 0;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.priority-option input:focus {
+    box-shadow: none !important;
+    outline: none !important;
+    transform: none !important;
 }
 
 
@@ -975,17 +988,6 @@ footer p {
     text-align: right;
 }
 
-
-/* ================= ACCESSIBILITY ================= */
-
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible {
-    outline: 4px solid #2457ff;
-    outline-offset: 3px;
-}
 
 
 /* ================= MOBILE ================= */
