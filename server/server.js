@@ -9,6 +9,10 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const path = require("path");
+const dns = require("dns");
+
+// Use public DNS to reliably resolve MongoDB Atlas SRV records on Windows
+dns.setServers(["8.8.8.8", "1.1.1.1"]);
 
 
 // ================= LOAD ENVIRONMENT =================
@@ -165,3 +169,4 @@ if (process.env.RENDER || !process.env.VERCEL) {
 }
 
 module.exports = app;
+

@@ -543,12 +543,13 @@ function setupLogout() {
 
 /* ---------------- API HELPER ---------------- */
 
-const isLocalStaticServer =
+const isLocalOrFile =
+  window.location.protocol === "file:" ||
   window.location.hostname === "localhost" ||
   window.location.hostname === "127.0.0.1";
 
 const API_BASE_URL =
-  isLocalStaticServer && window.location.port !== "5000"
+  (isLocalOrFile && window.location.port !== "5000")
     ? "http://localhost:5000"
     : "";
 
@@ -578,7 +579,10 @@ async function apiRequest(url, options = {}) {
   try {
     response = await fetch(fullUrl, fetchOptions);
   } catch (networkError) {
-    throw new Error("Network error. Unable to reach server.");
+    console.error("Fetch failed:", fullUrl, networkError);
+    throw new Error(
+      `Network error: Unable to reach ${fullUrl}. Is the server running with 'npm start'?`
+    );
   }
 
   let data;
