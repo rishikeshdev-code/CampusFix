@@ -543,15 +543,14 @@ function setupLogout() {
 
 /* ---------------- API HELPER ---------------- */
 
-const isLocalOrFile =
-  window.location.protocol === "file:" ||
-  window.location.hostname === "localhost" ||
-  window.location.hostname === "127.0.0.1";
+const isLocalServer =
+  (window.location.hostname === "localhost" ||
+   window.location.hostname === "127.0.0.1") &&
+  window.location.port === "5000";
 
-const API_BASE_URL =
-  (isLocalOrFile && window.location.port !== "5000")
-    ? "http://localhost:5000"
-    : "";
+const API_BASE_URL = isLocalServer
+  ? ""
+  : "https://campusfix-backend-figy.onrender.com";
 
 async function apiRequest(url, options = {}) {
   const method = (options.method || "GET").toUpperCase();
