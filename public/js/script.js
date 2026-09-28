@@ -13,13 +13,67 @@ function setupNavigation() {
   const currentPage =
     window.location.pathname.split("/").pop() || "index.html";
 
-  document.querySelectorAll(".nav-links a").forEach((link) => {
-    const linkPage = link.getAttribute("href");
-
-    if (linkPage === currentPage) {
-      link.setAttribute("aria-current", "page");
+  // Check login state
+  const token = localStorage.getItem("campusfixToken");
+  const userData = localStorage.getItem("campusfixUser");
+  let user = null;
+  if (token && userData) {
+    try {
+      user = JSON.parse(userData);
+    } catch (e) {
+      user = null;
     }
-  });
+  }
+
+  // Dynamically update nav-links on every page to preserve session visibility
+  const navContainer = document.querySelector(".nav-links");
+  if (navContainer) {
+    if (user && token) {
+      if (user.role === "moderator") {
+        navContainer.innerHTML = `
+          <a href="index.html">Home</a>
+          <a href="track.html">Track</a>
+          <a href="moderator.html">Moderator</a>
+          <button id="logoutButton" type="button" class="nav-button">Logout</button>
+        `;
+      } else {
+        navContainer.innerHTML = `
+          <a href="index.html">Home</a>
+          <a href="complaint.html">Report</a>
+          <a href="track.html">Track</a>
+          <a href="dashboard.html">Dashboard</a>
+          <button id="logoutButton" type="button" class="nav-button">Logout</button>
+        `;
+      }
+    } else {
+      navContainer.innerHTML = `
+        <a href="index.html">Home</a>
+        <a href="track.html">Track</a>
+        <a href="login.html">Login</a>
+        <a href="register.html" class="nav-button">Register</a>
+      `;
+    }
+
+    // Set active page indicator
+    navContainer.querySelectorAll("a").forEach((link) => {
+      const linkPage = link.getAttribute("href");
+      if (linkPage === currentPage) {
+        link.setAttribute("aria-current", "page");
+      }
+    });
+  }
+
+  // Hide login notice on complaint.html if already logged in
+  const loginNotice = document.querySelector(".login-notice");
+  if (loginNotice) {
+    if (user && token) {
+      loginNotice.style.display = "none";
+    } else {
+      loginNotice.style.display = "";
+    }
+  }
+
+  setupLogout();
 }
 
 /* ---------------- PASSWORD TOGGLES ---------------- */
@@ -67,11 +121,24 @@ function setupLoginForm() {
 
   if (!form) return;
 
+  const emailInput = document.getElementById("email");
+  const passwordInput = document.getElementById("password");
+
+  // Ensure login fields are completely empty on load
+  function clearLoginForm() {
+    if (emailInput) emailInput.value = "";
+    if (passwordInput) passwordInput.value = "";
+    form.reset();
+  }
+
+  clearLoginForm();
+  window.addEventListener("pageshow", clearLoginForm);
+
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
+    const email = emailInput ? emailInput.value.trim() : "";
+    const password = passwordInput ? passwordInput.value : "";
 
     try {
       const data = await apiRequest("/api/auth/login", {
@@ -100,7 +167,11 @@ function setupLoginForm() {
       );
 
       setTimeout(() => {
-        window.location.href = "dashboard.html";
+        if (data.user && data.user.role === "moderator") {
+          window.location.href = "moderator.html";
+        } else {
+          window.location.href = "dashboard.html";
+        }
       }, 700);
     } catch (error) {
       showMessage(
@@ -231,19 +302,19 @@ function setupComplaintForm() {
     const title = document.getElementById("title").value.trim();
     const category =
       document.getElementById("category").value;
-    const location =
-      document.getElementById("location").value.trim();
     const description =
       document.getElementById("description").value.trim();
+    const prioritySelect =
+      document.getElementById("priority");
 
     const priorityInput =
       document.querySelector(
         'input[name="priority"]:checked'
       );
 
-    const priority = priorityInput
-      ? priorityInput.value
-      : "medium";
+    const priority = prioritySelect
+      ? prioritySelect.value
+      : (priorityInput ? priorityInput.value : "medium");
 
     try {
       const data = await apiRequest(
@@ -254,7 +325,6 @@ function setupComplaintForm() {
           body: JSON.stringify({
             title,
             category,
-            location,
             description,
             priority
           })
@@ -344,7 +414,6 @@ function displayComplaint(complaint) {
     resultId: complaint.complaintId,
     resultTitle: complaint.title,
     resultCategory: complaint.category,
-    resultLocation: complaint.location,
     resultStatus: complaint.status,
     resultDate: formatDate(complaint.createdAt)
   };
@@ -356,6 +425,17 @@ function displayComplaint(complaint) {
       element.textContent = value;
     }
   });
+
+  const locationElem = document.getElementById("resultLocation");
+  if (locationElem) {
+    const locationRow = locationElem.closest(".result-row");
+    if (complaint.location) {
+      locationElem.textContent = complaint.location;
+      if (locationRow) locationRow.style.display = "";
+    } else if (locationRow) {
+      locationRow.style.display = "none";
+    }
+  }
 
   result.hidden = false;
 }
@@ -526,18 +606,21 @@ function displayDashboardComplaints(complaints) {
 /* ---------------- LOGOUT ---------------- */
 
 function setupLogout() {
-  const logoutButton =
-    document.getElementById("logoutButton") ||
-    document.getElementById("logoutLink");
+  const logoutButtons = document.querySelectorAll(
+    "#logoutButton, #logoutLink, #logoutBtn"
+  );
 
-  if (!logoutButton) return;
+  logoutButtons.forEach((btn) => {
+    if (btn.dataset.logoutBound) return;
+    btn.dataset.logoutBound = "true";
 
-  logoutButton.addEventListener("click", (e) => {
-    e.preventDefault();
-    localStorage.removeItem("campusfixUser");
-    localStorage.removeItem("campusfixToken");
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      localStorage.removeItem("campusfixUser");
+      localStorage.removeItem("campusfixToken");
 
-    window.location.href = "login.html";
+      window.location.href = "login.html";
+    });
   });
 }
 

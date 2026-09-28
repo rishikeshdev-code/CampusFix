@@ -83,7 +83,7 @@ app.get("/api/health", (req, res) => {
 
     res.json({
         success: true,
-        message: "CampusFix server is running."
+        message: "JVM CAMPUS FIX server is running."
     });
 
 });
@@ -156,10 +156,10 @@ async function startServer() {
     try {
         await connectDB();
         app.listen(PORT, () => {
-            console.log(`CampusFix running at http://localhost:${PORT}`);
+            console.log(`JVM CAMPUS FIX running at http://localhost:${PORT}`);
         });
     } catch (error) {
-        console.error("Failed to start CampusFix:", error.message);
+        console.error("Failed to start JVM CAMPUS FIX:", error.message);
         process.exit(1);
     }
 }

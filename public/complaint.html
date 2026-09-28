@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Report Complaint | CampusFix</title>
+    <title>Report Complaint | JVM CAMPUS FIX</title>
 
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -18,8 +18,8 @@
 
         <a href="index.html"
            class="logo"
-           aria-label="CampusFix home">
-            Campus<span>Fix</span>
+           aria-label="JVM CAMPUS FIX home">
+            JVM CAMPUS <span>FIX</span>
         </a>
 
         <nav class="nav-links" aria-label="Primary navigation">
@@ -180,26 +180,6 @@
                 </div>
 
 
-                <!-- Location -->
-
-                <div class="form-group">
-
-                    <label for="location">
-                        Location
-                    </label>
-
-                    <input
-                        type="text"
-                        id="location"
-                        name="location"
-                        placeholder="Example: Room 204, Building A"
-                        required
-                        maxlength="150"
-                    >
-
-                </div>
-
-
                 <!-- Description -->
 
                 <div class="form-group">
@@ -227,56 +207,22 @@
 
                 <!-- Priority -->
 
-                <fieldset class="form-group">
+                <div class="form-group">
 
-                    <legend>
+                    <label for="priority">
                         Priority
-                    </legend>
+                    </label>
 
-                    <div class="priority-options">
+                    <select
+                        id="priority"
+                        name="priority"
+                    >
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                    </select>
 
-                        <label class="priority-option">
-
-                            <input
-                                type="radio"
-                                name="priority"
-                                value="low"
-                                checked
-                            >
-
-                            <span>Low</span>
-
-                        </label>
-
-
-                        <label class="priority-option">
-
-                            <input
-                                type="radio"
-                                name="priority"
-                                value="medium"
-                            >
-
-                            <span>Medium</span>
-
-                        </label>
-
-
-                        <label class="priority-option">
-
-                            <input
-                                type="radio"
-                                name="priority"
-                                value="high"
-                            >
-
-                            <span>High</span>
-
-                        </label>
-
-                    </div>
-
-                </fieldset>
+                </div>
 
 
                 <!-- Form Message -->
@@ -311,7 +257,7 @@
     <footer>
 
         <div class="footer-logo">
-            Campus<span>Fix</span>
+            JVM CAMPUS <span>FIX</span>
         </div>
 
         <p>
@@ -319,7 +265,7 @@
         </p>
 
         <p class="copyright">
-            © 2026 CampusFix
+            © 2026 JVM CAMPUS FIX
         </p>
 
     </footer>

@@ -3,7 +3,6 @@
    CAMPUSFIX
    Complaint MongoDB Model
    ================================================== */
-
 const mongoose = require("mongoose");
 
 
@@ -56,12 +55,12 @@ const complaintSchema = new mongoose.Schema(
         },
 
 
-        // Location of the problem
+        // Location of the problem (optional, preserved for historical complaints)
         location: {
             type: String,
-            required: true,
             trim: true,
-            maxlength: 150
+            maxlength: 150,
+            default: ""
         },
 
 

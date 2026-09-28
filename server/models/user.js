@@ -36,6 +36,13 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: true,
             minlength: 6
+        },
+
+        // User role
+        role: {
+            type: String,
+            enum: ["student", "moderator"],
+            default: "student"
         }
 
     },
